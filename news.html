@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>News API Example</title>
+  </head>
+  <body>
+    <img id="news-image" src="" alt="News image" style="max-width: 600px;">
+    <script>
+      const request = new XMLHttpRequest();
+      const apiKey = 'b7736cf2ba5d40b7812f53e784208f30';
+      const url = `https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=${apiKey}`;
+      
+      request.open('GET', url);
+      request.onload = function () {
+        const data = JSON.parse(request.responseText);
+        console.log(data); // デバッグ用に表示
+        
+        if (data.articles && data.articles.length > 0) {
+          const firstArticle = data.articles[0];
+          const newsImage = document.getElementById('news-image');
+          
+          if (firstArticle.urlToImage) {
+            newsImage.src = firstArticle.urlToImage;
+          } else {
+            newsImage.alt = 'No image available';
+          }
+        }
+      };
+      request.send();
+    </script>
+  </body>
+</html>
