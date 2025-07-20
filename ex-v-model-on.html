@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>My first Vue app</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://unpkg.com/vue@3.5.0/dist/vue.global.js"></script>
+	</head>
+
+	<body>
+		<h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+		<div id="app">
+        <div class="col-12">
+          <input type="text" v-model="message" placeholder="メッセージを入力してください">
+          <button v-on:click="onClick" class="btn btn-primary mt-2">表示</button>
+          <p class="mt-3">入力されたメッセージ: {{ message }}</p>
+          <p v-if="alertMessage" class="alert alert-info mt-3">{{ alertMessage }}</p>
+      </div>
+		</div>
+
+		<script>
+			const appdata = {
+        data() {
+          return {
+            message: '', // 入力されたメッセージを格納するデータプロパティ
+          };
+        },
+        methods: {
+          onClick: function() {
+            alert(alertMessage = `入力されたメッセージ: ${this.message}`);
+          }
+        }
+      };
+
+			Vue.createApp(appdata).mount('#app');
+		</script>
+	</body>
+</html>

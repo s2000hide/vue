@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue.js Example</title>
+  <style>
+    .demo {
+      font-family: sans-serif;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      padding: 20px 30px;
+      margin-top: 1em;
+      margin-bottom: 40px;
+      user-select: none;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="blog-components-demo">
+    <blog-post title="Vueとの航海"></blog-post>
+    <blog-post title="Vueとの旅"></blog-post>
+    <blog-post title="Vueとの旅行記"></blog-post>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@3.5.0/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({});
+
+    app.component('blog-post', {
+      props: ['title'],
+      template: `<h4>
+          {{ title }}</h4>`
+    });
+    app.mount('#blog-components-demo');
+
+  </script>
+</body>
+</html>

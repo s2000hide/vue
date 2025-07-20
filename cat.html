@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cat API Example</title>
+	</head>
+	<body>
+		<img id="cat-image" src="" alt="Random cat image">
+		<script>
+			const request = new XMLHttpRequest();
+			request.open('GET', 'https://api.thecatapi.com/v1/images/search');
+			request.onload = function () {
+				const data = JSON.parse(request.responseText);
+				const catImage = document.getElementById('cat-image');
+				catImage.src = data[0].url;
+			};
+			request.send();
+		</script>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center
+				min-height: 100vh;
+				background-color: #f2f2f2;
+			}
+
+			#app {
+				text-align: center;
+			}
+
+			img {
+				max-width: 100%;
+				height: auto;
+				margin-top: 20px;
+			}
+
+			button {
+				margin-top: 20px;
+				padding: 10px;
+				font-size: 16px;
+				cursor: pointer;
+				background-color: #4CAF50;
+				color: white;
+				border: none;
+				border-radius: 5px;
+			}
+
+			button:hover {
+				background-color: #45a049;
+			}
+		</style>
+	</body>
+</html>
